@@ -3,26 +3,40 @@
 /*
 Plugin Name: Advanced Custom Fields: Price
 Plugin URI: https://github.com/speccode/acf-field-price
-Description: DESCRIPTION
-Version: 1.0.0
+Description: ACF Price field with number format.
+Version: 1.1.0
 Author: Maciej Czerpiński
-Author URI: http://speccode.com
+Author URI: http://maciej.czerpinski.com
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 */
 
-load_plugin_textdomain( 'acf-price', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+if( ! defined( 'ABSPATH' ) ) exit;
 
-function include_field_types_price( $version ) {
+class acf_plugin_price
+{
+    public function __construct()
+    {
+        $this->settings = array(
+            'version'   => '1.1.0',
+            'url'       => plugin_dir_url( __FILE__ ),
+            'path'      => plugin_dir_path( __FILE__ )
+        );
 
-	include_once( 'acf-price-v5.php' );
+        load_plugin_textdomain( 'acf-price', false, plugin_basename( dirname( __FILE__ ) ) . '/lang' );
 
+        add_action('acf/include_field_types',   array($this, 'include_field_types')); // v5
+        add_action('acf/register_fields',       array($this, 'include_field_types')); // v4
+    }
+
+    function include_field_types( $version = false )
+    {
+        if( ! $version ) {
+            $version = 4;
+        }
+
+        require( dirname( __FILE__ )  . '/acf-price-v' . $version . '.php');
+    }
 }
-add_action( 'acf/include_field_types', 'include_field_types_price' );
 
-function register_fields_price() {
-
-	include_once( 'acf-price-v4.php' );
-
-}
-add_action( 'acf/register_fields', 'register_fields_price' );
+new acf_plugin_price;
