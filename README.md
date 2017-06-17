@@ -13,9 +13,11 @@ ACF Price field with number formatting.
 - When you use `get_field` function you will get preformatted number based on your settings.
 
 **Options**
+
 `format`
 
 **Default parameters result**
+
 `1 337.00`
 
 ### Compatibility
