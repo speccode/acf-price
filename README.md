@@ -30,12 +30,6 @@ This ACF field type is compatible with:
 3. Create a new field via ACF and select the Price type
 4. Please refer to the description for more info regarding the field type settings
 
-### TODO
-[ ] composer.json
-[ ] readme.txt for WP plugin repository
-[ ] `apply_filter` for format choices
-[ ] Translations
-
 ### CHANGELOG
 ##### [1.1.0] 2017-06-17
 - added `format` option
