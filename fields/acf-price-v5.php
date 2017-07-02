@@ -1,60 +1,16 @@
 <?php
 
-class acf_field_price extends acf_field
+class acf_price extends acf_price_common
 {
-	public function __construct( $settings )
-	{
-		$this->name = 'price';
-		$this->label = __('Price', 'acf-price');
-		$this->category = 'jquery';
-		$this->defaults = array(
-			'format'				=> '|2/./ |'
-		);
-
-		$this->l10n = array(
-			//'error'	=> __('Error! Please enter a higher value', 'acf-price'),
-		);
-
-		$this->settings = $settings;
-
-    	parent::__construct();
-	}
-
-
 	public function render_field_settings( $field )
 	{
-		$choices = array(
-			'|2/./ |' 	=> '1 337.55',
-			'|2/,/ |' 	=> '1 337,55',
-			'|2/./,|' 	=> '1,337.55',
-			'|2/,/.|' 	=> '1.337,55',
-			'|0//|' 	=> '1337',
-			'|0// |' 	=> '1 337'
-		);
-
-		//apply_filter
-
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Format','acf-price'),
-			'instructions'	=> __('Number format template','acf-price'),
+			'label'			=> __('Format', 'acf-price'),
+			'instructions'	=> __('Number format template', 'acf-price'),
 			'type'			=> 'select',
 			'name'			=> 'format',
-			'choices'		=> $choices
+			'choices'		=> $this->formats
 		));
-	}
-
-	private function parse_format( $format )
-	{
-		$elements = explode('/', str_replace('|', '', $format));
-		if (count($elements) !== 3) {
-			return $this->parse_format($this->defaults['format']);
-		}
-
-		return array(
-			'decimals'		 		=> $elements[0],
-			'decimal_point'			=> $elements[1],
-			'thousands_separator' 	=> $elements[2]
-		);
 	}
 
 	public function render_field( $field )

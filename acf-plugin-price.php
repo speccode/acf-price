@@ -4,7 +4,7 @@
 Plugin Name: Advanced Custom Fields: Price
 Plugin URI: https://github.com/speccode/acf-field-price
 Description: ACF Price field with number format.
-Version: 1.1.0
+Version: 1.2.0
 Author: Maciej Czerpiński
 Author URI: http://maciej.czerpinski.com
 License: MIT
@@ -15,18 +15,14 @@ if( ! defined( 'ABSPATH' ) ) exit;
 
 class acf_plugin_price
 {
+    const VERSION = '1.2.0';
+
     public function __construct()
     {
-        $this->settings = array(
-            'version'   => '1.1.0',
-            'url'       => plugin_dir_url( __FILE__ ),
-            'path'      => plugin_dir_path( __FILE__ )
-        );
-
         load_plugin_textdomain( 'acf-price', false, plugin_basename( dirname( __FILE__ ) ) . '/lang' );
 
         add_action('acf/include_field_types',   array($this, 'include_field_types')); // v5
-        add_action('acf/register_fields',       array($this, 'include_field_types')); // v4
+        //add_action('acf/register_fields',       array($this, 'include_field_types')); // v4
     }
 
     function include_field_types( $version = false )
@@ -35,9 +31,10 @@ class acf_plugin_price
             $version = 4;
         }
 
-        require( dirname( __FILE__ )  . '/acf-price-v' . $version . '.php');
+        require( dirname( __FILE__ )  . '/fields/acf-price-common.php');
+        require( dirname( __FILE__ )  . '/fields/acf-price-v' . $version . '.php');
 
-        new acf_field_price( $this->settings );
+        new acf_price();
     }
 }
 
