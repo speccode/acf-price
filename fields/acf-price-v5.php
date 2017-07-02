@@ -37,27 +37,19 @@ class acf_price extends acf_price_common
 
 	public function update_value( $value, $post_id, $field )
 	{
-		var_dump($value);
 		$format = $this->parse_format( $field['format'] );
-		$value = str_replace( array( $format['decimal_point'], $format['thousands_separator'] ), array( '.', '' ), $value );
+		$value = str_replace( array( $format['thousands_separator'], $format['decimal_point'] ), array( '', '.' ), $value );
 
-		var_dump($format);
-		var_dump(floatval($value));
-
-
-		die;
-		return floatval($value);
+		return $value;
 	}
 
-	public function format_value( $value, $post_id, $field )
+	public function load_value( $value, $post_id, $field )
 	{
 		$format = $this->parse_format( $field['format'] );
 
 		if( empty( $value ) ) {
 			$value = 0;
 		}
-
-		$value = floatval($value);
 
 		return number_format( $value, $format['decimals'], $format['decimal_point'], $format['thousands_separator'] );
 	}

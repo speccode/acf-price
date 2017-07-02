@@ -15,10 +15,14 @@ if( ! defined( 'ABSPATH' ) ) exit;
 
 class acf_plugin_price
 {
-    const VERSION = '1.2.0';
-
     public function __construct()
     {
+        $this->settings = array(
+            'version'   => '1.2.0',
+            'url'       => plugin_dir_url( __FILE__ ),
+            'path'      => plugin_dir_path( __FILE__ )
+        );
+
         load_plugin_textdomain( 'acf-price', false, plugin_basename( dirname( __FILE__ ) ) . '/lang' );
 
         add_action('acf/include_field_types',   array($this, 'include_field_types')); // v5
@@ -34,7 +38,7 @@ class acf_plugin_price
         require( dirname( __FILE__ )  . '/fields/acf-price-common.php');
         require( dirname( __FILE__ )  . '/fields/acf-price-v' . $version . '.php');
 
-        new acf_price();
+        new acf_price( $this->settings );
     }
 }
 

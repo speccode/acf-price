@@ -2,16 +2,12 @@
 
 abstract class acf_price_common extends acf_field
 {
-    public function __construct()
+    public function __construct( $settings )
     {
         $this->name = 'price';
         $this->label = __('Price', 'acf-price');
         $this->category = 'jQuery';
-        $this->settings = array(
-            'version'   => acf_plugin_price::VERSION,
-            'url'       => plugin_dir_url( __FILE__ ),
-            'path'      => plugin_dir_path( __FILE__ )
-        );
+        $this->settings = $settings;
         $this->formats = array(
             '|2/./ |'   => '1 337.55',
             '|2/,/ |'   => '1 337,55',
