@@ -15,6 +15,15 @@ ACF Price field with number formatting.
 **Options**
 `format`
 
+Available formats:
+- `1 337.55`
+- `1 337,55`
+- `1,337.55`
+- `1.337,55`
+- `1337`
+- `1 337`
+
+
 **Default parameters result**
 `1 337.00`
 
