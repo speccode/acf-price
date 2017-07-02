@@ -40,4 +40,23 @@ abstract class acf_price_common extends acf_field
             'thousands_separator'   => $elements[2]
         );
     }
+
+    public function update_value( $value, $post_id, $field )
+    {
+        $format = $this->parse_format( $field['format'] );
+        $value = str_replace( array( $format['thousands_separator'], $format['decimal_point'] ), array( '', '.' ), $value );
+
+        return $value;
+    }
+
+    public function load_value( $value, $post_id, $field )
+    {
+        $format = $this->parse_format( $field['format'] );
+
+        if( empty( $value ) ) {
+            $value = 0;
+        }
+
+        return number_format( $value, $format['decimals'], $format['decimal_point'], $format['thousands_separator'] );
+    }
 }

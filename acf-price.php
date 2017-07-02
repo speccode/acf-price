@@ -26,7 +26,7 @@ class acf_plugin_price
         load_plugin_textdomain( 'acf-price', false, plugin_basename( dirname( __FILE__ ) ) . '/lang' );
 
         add_action('acf/include_field_types',   array($this, 'include_field_types')); // v5
-        //add_action('acf/register_fields',       array($this, 'include_field_types')); // v4
+        add_action('acf/register_fields',       array($this, 'include_field_types')); // v4
     }
 
     function include_field_types( $version = false )
