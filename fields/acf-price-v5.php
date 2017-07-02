@@ -29,16 +29,23 @@ class acf_price extends acf_price_common
 
 	public function input_admin_enqueue_scripts()
 	{
-		wp_register_script( 'jquery-numeric', $this->settings['url'] . 'js/jquery.number.min.js', array( 'jquery' ), $this->settings['version'] );
-		wp_register_script( 'acf-price-v5', $this->settings['url'] . 'js/acf-price-v5.js', array( 'jquery', 'jquery-numeric' ), $this->settings['version'] );
+		wp_register_script( 'jquery-numeric', $this->settings['url'] . 'assets/js/jquery.number.min.js', array( 'jquery' ), $this->settings['version'] );
+		wp_register_script( 'acf-price-v5', $this->settings['url'] . 'assets/js/acf-price-v5.js', array( 'jquery', 'jquery-numeric' ), $this->settings['version'] );
 
 		wp_enqueue_script( 'acf-price-v5' );
 	}
 
 	public function update_value( $value, $post_id, $field )
 	{
+		var_dump($value);
 		$format = $this->parse_format( $field['format'] );
 		$value = str_replace( array( $format['decimal_point'], $format['thousands_separator'] ), array( '.', '' ), $value );
+
+		var_dump($format);
+		var_dump(floatval($value));
+
+
+		die;
 		return floatval($value);
 	}
 
