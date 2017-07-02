@@ -99,6 +99,3 @@ class acf_field_price extends acf_field
 		return number_format( $value, $format['decimals'], $format['decimal_point'], $format['thousands_separator'] );
 	}
 }
-
-new acf_field_price( $this->settings );
-

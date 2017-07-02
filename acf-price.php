@@ -36,6 +36,8 @@ class acf_plugin_price
         }
 
         require( dirname( __FILE__ )  . '/acf-price-v' . $version . '.php');
+
+        new acf_field_price( $this->settings );
     }
 }
 
