@@ -4,11 +4,12 @@
 Plugin Name: Advanced Custom Fields: Price
 Plugin URI: https://github.com/speccode/acf-field-price
 Description: ACF Price field with number format.
-Version: 1.2.0
+Version: 1.2.1
 Author: Maciej Czerpiński
 Author URI: http://maciej.czerpinski.com
 License: MIT
 License URI: http://opensource.org/licenses/MIT
+Text Domain: acf-price
 */
 
 if( ! defined( 'ABSPATH' ) ) exit;
@@ -18,7 +19,7 @@ class acf_plugin_price
     public function __construct()
     {
         $this->settings = array(
-            'version'   => '1.2.0',
+            'version'   => '1.2.1',
             'url'       => plugin_dir_url( __FILE__ ),
             'path'      => plugin_dir_path( __FILE__ )
         );

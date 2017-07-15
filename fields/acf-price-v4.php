@@ -10,7 +10,7 @@ class acf_price extends acf_price_common
         ?>
 <tr class="field_option field_option_<?php echo $this->name; ?>">
     <td class="label">
-        <label><?php _e('Format','acf-price'); ?></label>
+        <label><?php _e('Format', 'acf-price'); ?></label>
         <p class="description"><?php  _e('Number format template', 'acf-price'); ?></p>
     </td>
     <td>
