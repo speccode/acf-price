@@ -1,5 +1,5 @@
 === Advanced Custom Fields: Price Field ===
-Contributors: Maciej Czerpiński
+Contributors: speccode
 Tags: acf, advanced custom fields, price
 Requires at least: 3.5
 Tested up to: 4.8
