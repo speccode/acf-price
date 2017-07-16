@@ -3,7 +3,7 @@ Contributors: speccode
 Tags: acf, advanced custom fields, price
 Requires at least: 3.5
 Tested up to: 4.8
-Stable tag: trunk
+Stable tag: 1.2.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -46,6 +46,9 @@ This ACF field type is compatible with:
 4. Please refer to the description for more info regarding the field type settings
 
 == Changelog ==
+
+= [1.2.1] 2017-07-15 =
+* added translations
 
 = [1.2.0] 2017-07-02 =
 * bugfixes
