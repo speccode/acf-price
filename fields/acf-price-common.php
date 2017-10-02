@@ -49,7 +49,7 @@ abstract class acf_price_common extends acf_field
         return $value;
     }
 
-    public function load_value( $value, $post_id, $field )
+    public function format_value( $value, $post_id, $field )
     {
         $format = $this->parse_format( $field['format'] );
 
