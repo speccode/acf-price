@@ -14,7 +14,8 @@ abstract class acf_price_common extends acf_field
             '|2/./,|'   => '1,337.55',
             '|2/,/.|'   => '1.337,55',
             '|0//|'     => '1337',
-            '|0// |'    => '1 337'
+            '|0// |'    => '1 337',
+            '|0//.|'    => '1.337'
         );
         $this->defaults = array(
             'format'                => '|2/./ |'
